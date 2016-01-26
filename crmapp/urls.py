@@ -38,7 +38,7 @@ urlpatterns = patterns('',
 	url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page' : '/login/'}),
 
 	# Account-related URLs
-	url(r'^account/list/$', AccountList.as_view(), name='acount_list'),
+	url(r'^account/list/$', AccountList.as_view(), name='account_list'),
 
 	# Contact-related URLs
 

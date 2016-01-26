@@ -34,7 +34,7 @@
 						{% endif %}
 						{% if page_obj.has_next %}
 							<li class="pull-right">
-								<a href="{% url 'account_list' %}?page={{ page_obj.next_page_number}}{% if request.GET.account %}&account={{ request.Get.account }}{% endif %}">Next</a>
+								<a href="{% url 'account_list' %}?page={{ page_obj.next_page_number}}{% if request.GET.account %}&account={{ request.GET.account }}{% endif %}">Next</a>
 							</li>
 						{% endif %}
 					</ul>
