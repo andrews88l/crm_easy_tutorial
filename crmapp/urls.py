@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
+from accounts.urls import account_urls
+
 admin.autodiscover()
 
 from marketing.views import HomePage
@@ -39,6 +41,7 @@ urlpatterns = patterns('',
 
 	# Account-related URLs
 	url(r'^account/list/$', AccountList.as_view(), name='account_list'),
+	url(r'^account/(?P<uuid>[\w-]+)/', include(account_urls)),
 
 	# Contact-related URLs
 
