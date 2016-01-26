@@ -27,7 +27,7 @@
 			{% if is_paginated %}
 				<div id="al-paginate">
 					<ul class="strip-list al-pgnt-list">
-						{% if page_object.has_previous %}
+						{% if page_obj.has_previous %}
 							<li class="pull-left">
 								<a href="{% url 'account_list' %}?page={{ page_obj.previous_page_number }}{% if request.GET.account %}&account={{ request.GET.account }}{% endif %}">Prev</a>
 							</li>
