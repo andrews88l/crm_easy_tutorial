@@ -24,6 +24,7 @@ admin.autodiscover()
 from marketing.views import HomePage
 from subscribers import views as subscriber_views
 from accounts.views import AccountList
+from contacts.views import ContactDelete
 
 urlpatterns = patterns('', 
 
@@ -48,6 +49,7 @@ urlpatterns = patterns('',
 	# Contact-related URLs
 	url(r'^contact/new/$', 'crmapp.contacts.views.contact_cru', name='contact_new'),
 	url(r'^contact/(?P<uuid>[\w-]+)/', include(contact_urls)),
+	url(r'^contact/(?P<pk>[\w-]+)/delete/$', ContactDelete.as_view(), name='contact_delete'),
 
 	# Communication-related URLs
 
