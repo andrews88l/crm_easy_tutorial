@@ -52,15 +52,15 @@ def account_cru(request, uuid=None):
 
 	if uuid:
 		account = get_object_or_404(Account, uuid=uuid)
-		if acount.owner != request.user:
+		if account.owner != request.user:
 			return HttpResponseForbidden()
-		else:
-			account = Account(owner=request.user)
+	else:
+		account = Account(owner=request.user)
 
 	if request.POST:
 		form = AccountForm(request.POST, instance=account)
 		if form.is_valid():
-			account.save()
+			form.save()
 			redirect_url = reverse('crmapp.accounts.views.account_detail', args=(account.uuid,))
 			return HttpResponseRedirect(redirect_url)
 	else:
