@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 
 from .forms import AccountForm
+from crmapp.communications.forms import CommunicationForm
 
 from .models import Account
 from crmapp.contacts.models import Contact
@@ -46,10 +47,13 @@ def account_detail(request, uuid):
 	contacts = Contact.objects.filter(account=account)
 	communications = Communication.objects.filter(account=account).order_by('-created_on')
 
+	form = CommunicationForm()
+
 	variables = {
 		'account' : account,
 		'contacts' : contacts,
 		'communications' : communications,
+		'form' : form,
 	}
 
 	return render(request, 'accounts/account_detail.html', variables)
