@@ -10,6 +10,7 @@ from django.shortcuts import get_object_or_404
 from .forms import AccountForm
 
 from .models import Account
+from crmapp.contacts.models import Contact
 
 # Create your views here.
 
@@ -41,8 +42,11 @@ def account_detail(request, uuid):
 	if account.owner != request.user:
 		return HttpResponseForbidden()
 
+	contacts = Contact.objects.filter(account=account)
+
 	variables = {
 		'account' : account,
+		'contacts' : contacts,
 	}
 
 	return render(request, 'accounts/account_detail.html', variables)
