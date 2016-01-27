@@ -29,6 +29,8 @@ def contact_cru(request, uuid=None, account=None):
 		contact = get_object_or_404(Contact, uuid=uuid)
 		if contact.owner != request.user:
 			return HttpResponseForbidden()
+	else:
+		contact = Contact(owner=request.user)
 
 	if request.POST:
 		form = ContactForm(request.POST, instance=contact)
