@@ -17,6 +17,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
 from accounts.urls import account_urls
+from contacts.urls import contact_urls
 
 admin.autodiscover()
 
@@ -45,6 +46,7 @@ urlpatterns = patterns('',
 	url(r'^account/(?P<uuid>[\w-]+)/', include(account_urls)),
 
 	# Contact-related URLs
+	url(r'^contact/(?P<uuid>[\w-]+)/', include(contact_urls)),
 
 	# Communication-related URLs
 
