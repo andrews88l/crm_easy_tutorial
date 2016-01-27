@@ -53,6 +53,6 @@ urlpatterns = patterns('',
 	url(r'^contact/(?P<pk>[\w-]+)/delete/$', ContactDelete.as_view(), name='contact_delete'),
 
 	# Communication-related URLs
-	url(r'^comm/(?P<uuid>[\w-]+)/', includ(comm_urls)),
+	url(r'^comm/(?P<uuid>[\w-]+)/', include(comm_urls)),
 
 )
