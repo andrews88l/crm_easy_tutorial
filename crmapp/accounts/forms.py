@@ -1,4 +1,4 @@
-from django import DATE_INPUT_FORMATS
+from django import forms
 
 from .models import Account
 
