@@ -47,6 +47,7 @@ urlpatterns = patterns('',
 
 	# Contact-related URLs
 	url(r'^contact/(?P<uuid>[\w-]+)/', include(contact_urls)),
+	url(r'^contact/new/$', 'crmapp.contacts.views.contact_cru', name='contact_new'),
 
 	# Communication-related URLs
 
