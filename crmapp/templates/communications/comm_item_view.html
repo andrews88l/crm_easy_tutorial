@@ -2,7 +2,7 @@
 	<h5 class="co-item-h">{{ comm.subject }}
 		<span>
 			{# Comm Delete URL #}
-			<a class="cancel comm-control" href=""></a>
+			<a class="cancel comm-control" href="{{ comm.get_delete_url }}?account={{ account.id }}"></a>
 			{# Comm Edit URL #}
 			<a class="pen comm-control comm-edit" href="{{ comm.get_update_url }}?account={{ account.id }}"></a>
 		</span>
