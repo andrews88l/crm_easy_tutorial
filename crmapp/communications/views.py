@@ -39,12 +39,13 @@ def comm_cru(request, uuid=None, account=None):
 			if account.owner != request.user:
 				return HttpResponseForbidden()
 			# save the data
-			comm = form.save(commit=False)
-			comm.owner = request.user
-			comm.save()
+			form.save()
 			# return the user to the account detail view
-			reverse_url = reverse('crmapp.acounts.views.account_detail', args=(account.uuid,))
-			return HttpResponseRedirect(reverse_url)
+			if request.is_ajax():
+				return render(request, 'communicationis/comm_item_view.html', {'comm' : comm, 'account' : account})
+			else:
+				reverse_url = reverse('crmapp.acounts.views.account_detail', args=(account.uuid,))
+				return HttpResponseRedirect(reverse_url)
 		else:
 			# if the form isn't valid, still fetch the account so it can be passed to the template
 			account = form.cleaned_data['account']
@@ -57,6 +58,9 @@ def comm_cru(request, uuid=None, account=None):
 		'account' : account,
 	}
 
-	template = 'communications/comm_cru.html'
+	if request.is_ajax():
+		template = 'communications/comm_item_form.html'
+	else:
+		template = 'communications/comm_cru.html'
 
 	return render(request, template, variables)
